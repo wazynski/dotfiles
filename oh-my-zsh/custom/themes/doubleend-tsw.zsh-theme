@@ -19,21 +19,28 @@ function battery_charge() {
 function put_spacing() {
   local git=$(git_prompt_info)
   if [ ${#git} != 0 ]; then
-    ((git=${#git} - 1))
+    ((git=${#git} - 10))
   else
     git=0
   fi
 
   local bat=$(battery_charge)
   if [ ${#bat} != 0 ]; then
-    ((bat = ${#bat} - 1))
+    ((bat = ${#bat} - 18))
   else
     bat=0
   fi
 
+  local rv=$(ruby_version)
+  if [ ${#rv} != 0 ]; then
+    ((rv=${#rv} - 8))
+  else
+    rv= 0
+  fi
+
   local termwidth
 
-  (( termwidth = ${COLUMNS} - 3 - ${#HOST} - ${#$(get_pwd)} - ${bat} - ${git} ))
+  (( termwidth = ${COLUMNS} - 3 - ${#HOST} - ${#USER} - ${#$(get_pwd)} - ${bat} - ${git} - ${rv} ))
 
   local spacing=""
   for i in {1..$termwidth}; do
