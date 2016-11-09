@@ -59,6 +59,9 @@
   emmet: {}
   "exception-reporting":
     userId: "d4057cb0-edf4-1925-2d5d-f2e1ef28f601"
+  "file-icons":
+    coloured: false
+    onChanges: true
   linter:
     errorPanelHeight: 166
   "linter-foodcritic":
@@ -82,6 +85,7 @@
     createOnChange: true
     forceOverwrite: true
   "ruby-test": {}
+  "seti-ui": {}
   "spell-check": {}
   "tabs-to-spaces": {}
   "tool-bar":
