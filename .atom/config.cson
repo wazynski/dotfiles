@@ -33,7 +33,7 @@
   "auto-update-packages": {}
   "autocomplete-plus": {}
   "autocomplete-ruby":
-    rsensePath: "~/.gem/ruby/2.3.1/bin/rsense"
+    rsensePath: "~/.rbenv/shims/rsense"
   "clipboard-plus": {}
   core:
     customFileTypes:
@@ -83,11 +83,6 @@
     forceOverwrite: true
   "ruby-test": {}
   "spell-check": {}
-  "sync-settings":
-    _analyticsUserId: "44784095-5ad6-47e4-81ce-517713d6a4a9"
-    _lastBackupHash: "f99147357cb24838f7b270b2d6898233c5c8c1d7"
-    gistId: "1672a85aa2b9a63cdbdb"
-    personalAccessToken: "e5217cab75ff6f543e11ec8c8bb08f6d2c0e99b0"
   "tabs-to-spaces": {}
   "tool-bar":
     position: "Left"
