@@ -43,6 +43,7 @@
     disabledPackages: [
       "language-chef"
       "linter-scss-lint"
+      "autocomplete-ruby"
     ]
     ignoredNames: [
       ".codekit-cache"
