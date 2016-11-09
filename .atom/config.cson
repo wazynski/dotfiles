@@ -1,0 +1,95 @@
+"*":
+  "atom-beautify":
+    css:
+      align_assignments: true
+      beautify_on_save: true
+      configPath: "~/.csscomb.json"
+      convert_quotes: "single"
+      default_beautifier: "CSScomb"
+      newline_between_rules: true
+    general:
+      _analyticsUserId: "69a39460-7d1c-49ff-b35b-4fc43d42433a"
+    less:
+      beautify_on_save: true
+      default_beautifier: "CSScomb"
+    sass:
+      beautify_on_save: true
+      configPath: "~/.csscomb.json"
+    scss:
+      beautify_on_save: true
+      configPath: "~/.csscomb.json"
+      default_beautifier: "CSScomb"
+  "atom-css-comb":
+    projectConfigs: ".csscomb.json"
+    readyMadeConfigs: "csscomb"
+  "atom-material-ui":
+    colors:
+      abaseColor: "#8c888d"
+      accentColor: "#fdfffd"
+    fonts: {}
+    tabs: {}
+    treeView:
+      compactList: true
+  "auto-update-packages": {}
+  "autocomplete-plus": {}
+  "autocomplete-ruby":
+    rsensePath: "~/.gem/ruby/2.3.1/bin/rsense"
+  "clipboard-plus": {}
+  core:
+    customFileTypes:
+      "text.html.ruby": [
+        "erb"
+      ]
+    disabledPackages: [
+      "language-chef"
+      "linter-scss-lint"
+    ]
+    ignoredNames: [
+      ".codekit-cache"
+    ]
+    themes: [
+      "seti-ui"
+      "railscast-theme"
+    ]
+  editor:
+    fontSize: 13
+    invisibles: {}
+    showIndentGuide: true
+    showInvisibles: true
+  emmet: {}
+  "exception-reporting":
+    userId: "d4057cb0-edf4-1925-2d5d-f2e1ef28f601"
+  linter:
+    errorPanelHeight: 166
+  "linter-foodcritic":
+    executablePath: "/Users/tomskarbek/.rbenv/shims/foodcritic"
+  "linter-jshint":
+    lintInlineJavaScript: true
+  "linter-php":
+    executablePath: "/usr/bin/php"
+  "linter-rubocop":
+    command: "/Users/tomskarbek/.rbenv/versions/2.2.2/bin/rubocop"
+  "linter-ruby": {}
+  "linter-scss-lint":
+    executablePath: "/Users/tomskarbek/.rbenv/shims/scss-lint"
+  minimap:
+    plugins:
+      linter: true
+      pigments: true
+      pigmentsDecorationsZIndex: 0
+  "one-dark-ui": {}
+  "package-sync":
+    createOnChange: true
+    forceOverwrite: true
+  "ruby-test": {}
+  "spell-check": {}
+  "sync-settings":
+    _analyticsUserId: "44784095-5ad6-47e4-81ce-517713d6a4a9"
+    _lastBackupHash: "f99147357cb24838f7b270b2d6898233c5c8c1d7"
+    gistId: "1672a85aa2b9a63cdbdb"
+    personalAccessToken: "e5217cab75ff6f543e11ec8c8bb08f6d2c0e99b0"
+  "tabs-to-spaces": {}
+  "tool-bar":
+    position: "Left"
+  welcome:
+    showOnStartup: false
