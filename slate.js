@@ -54,14 +54,30 @@ var jabber = S.op("move", {
   "x" : "screenOriginX+(screenSizeX/4)",
   "y" : "screenOriginY",
   "width" : "688",
-  "height" : "screenSizeY"
+  "height" : "1417"
 });
 
-var slack = S.op("move", {
+var calendar = S.op("move", {
   "screen" : leftScreenRef,
   "x" : "screenOriginX+688",
   "y" : "screenOriginY",
-  "width" : "1016",
+  "width" : "1231",
+  "height" : "screenSizeY"
+});
+
+var notes = S.op("move", {
+  "screen" : leftScreenRef,
+  "x" : "screenOriginX+853",
+  "y" : "screenOriginY",
+  "width" : "807",
+  "height" : "screenSizeY"
+});
+
+var reader = S.op("move", {
+  "screen" : leftScreenRef,
+  "x" : "screenOriginX+1660",
+  "y" : "screenOriginY",
+  "width" : "900",
   "height" : "screenSizeY"
 });
 
@@ -132,7 +148,7 @@ var twoMonitorLayout = S.lay("twoMonitor", {
     "repeat" : true
   },
   "Calendar" : {
-    "operations" : [dellLeft],
+    "operations" : [calendar],
     "repeat" : true
   },
   "Atom" : {
@@ -144,11 +160,15 @@ var twoMonitorLayout = S.lay("twoMonitor", {
     "repeat" : true
   },
   "Things" : {
-    "operations" : [dellQuaterMidR],
+    "operations" : [dellQuaterRight],
     "repeat" : true
   },
   "Mail" : {
     "operations" : [dellRight],
+    "repeat" : true
+  },
+  "Microsoft Outlook" : {
+    "operations" : [dellLeft],
     "repeat" : true
   },
   "Airmail" : {
@@ -160,11 +180,11 @@ var twoMonitorLayout = S.lay("twoMonitor", {
     "repeat" : true
   },
   "Reeder" : {
-    "operations" : [dellThirdRight],
+    "operations" : [reader],
     "repeat" : true
   },
   "Slack" : {
-    "operations" : [slack],
+    "operations" : [dellThirdLeft],
     "repeat" : true
   },
   "Cisco Jabber" : {
@@ -185,7 +205,7 @@ var twoMonitorLayout = S.lay("twoMonitor", {
     "repeat" : true
   },
   "Notes" : {
-    "operations" : [dellQuaterRight],
+    "operations" : [notes],
     "repeat" : true
   }
 });
@@ -221,6 +241,10 @@ var oneMonitorLayout = S.lay("oneMonitor", {
     "repeat" : true
   },
   "Mail" : {
+    "operations" : [lapFull],
+    "repeat" : true
+  },
+  "Microsoft Outlook" : {
     "operations" : [lapFull],
     "repeat" : true
   },
