@@ -8,367 +8,236 @@ S.cfga({
 });
 
 // Monitors
-var monDell  = "2560x1440";
-var monTbolt  = "2560x1440";
 
-var leftScreenRef = "0";
-var rightScreenRef = "1";
+var leftMonitor = "0";
+var rightMonitor = "1";
 
-var monLaptop = "1440x900";
+// Position Function
+function position(w, h, x, y, screen) {
+  width = slate.screenForRef(screen).visibleRect().width * (w / 100);
+  height = slate.screenForRef(screen).visibleRect().height * (h / 100);
+  xPos = slate.screenForRef(screen).visibleRect().width * (x / 100);
+  yPos = slate.screenForRef(screen).visibleRect().height * (y / 100);
 
-// Operations
-var lapFull = S.op("move", {
-  "screen" : monLaptop,
-  "x" : "screenOriginX",
-  "y" : "screenOriginY",
-  "width" : "screenSizeX",
-  "height" : "screenSizeY"
-});
+  return S.op("move", {
+    "screen" : screen,
+    "x" : "screenOriginX + " + xPos,
+    "y" : "screenOriginY + " + yPos,
+    "width" : width,
+    "height" : height
+   });
+}
 
-var dellFull = S.op("move", {
-  "screen" : leftScreenRef,
-  "x" : "screenOriginX",
-  "y" : "screenOriginY",
-  "width" : "screenSizeX",
-  "height" : "screenSizeY"
-});
-
-var tboltFull = S.op("move", {
-  "screen" : rightScreenRef,
-  "x" : "screenOriginX",
-  "y" : "screenOriginY",
-  "width" : "screenSizeX",
-  "height" : "screenSizeY"
-});
-
-var sourceTreeMain = S.op("move", {
-  "screen" : leftScreenRef,
-  "x" : "screenOriginX+(screenSizeX/4)",
-  "y" : "screenOriginY",
-  "width" : "(screenSizeX/12)*5",
-  "height" : "screenSizeY"
-});
-
-var jabber = S.op("move", {
-  "screen" : leftScreenRef,
-  "x" : "screenOriginX+(screenSizeX/4)",
-  "y" : "screenOriginY",
-  "width" : "688",
-  "height" : "1417"
-});
-
-var calendar = S.op("move", {
-  "screen" : leftScreenRef,
-  "x" : "screenOriginX+688",
-  "y" : "screenOriginY",
-  "width" : "1231",
-  "height" : "screenSizeY"
-});
-
-var notes = S.op("move", {
-  "screen" : leftScreenRef,
-  "x" : "screenOriginX+853",
-  "y" : "screenOriginY",
-  "width" : "807",
-  "height" : "screenSizeY"
-});
-
-var reader = S.op("move", {
-  "screen" : leftScreenRef,
-  "x" : "screenOriginX+1660",
-  "y" : "screenOriginY",
-  "width" : "900",
-  "height" : "screenSizeY"
-});
-
-// Thunderbolt
-
-var tboltLeft = tboltFull.dup({ "width" : "screenSizeX/2" });
-var tboltRight = tboltLeft.dup({ "x" : "screenOriginX+(screenSizeX/2)" });
-
-var tboltThirdLeft = tboltFull.dup({ "width" : "screenSizeX/3" });
-var tboltThirdMid = tboltThirdLeft.dup({ "x" : "screenOriginX+(screenSizeX/3)" });
-var tboltThirdRight = tboltThirdLeft.dup({ "x" : "screenOriginX+((screenSizeX/3)*2)" });
-
-var tboltTwoThirdsLeft = tboltFull.dup({ "width" : "(screenSizeX*2)/3" });
-var tboltTwoThirdsRight =  tboltTwoThirdsLeft.dup({ "x" : "screenOriginX+((screenSizeX*2)/3)" });
-
-var tboltQuaterLeft = tboltFull.dup({ "width" : "screenSizeX/4" });
-var tboltQuaterMidL = tboltQuaterLeft.dup({ "x" : "screenOriginX+(screenSizeX/4)" });
-var tboltQuaterMidR = tboltQuaterLeft.dup({ "x" : "screenOriginX+((screenSizeX/4)*2)" });
-var tboltQuaterRight = tboltQuaterLeft.dup({ "x" : "screenOriginX+((screenSizeX/4)*3)" });
-
-// Dell
-
-var dellLeft = dellFull.dup({ "width" : "screenSizeX/2" });
-var dellRight = dellLeft.dup({ "x" : "screenOriginX+(screenSizeX/2)" });
-
-var dellThirdLeft = dellFull.dup({ "width" : "screenSizeX/3" });
-var dellThirdMid = dellThirdLeft.dup({ "x" : "screenOriginX+(screenSizeX/3)" });
-var dellThirdRight = dellThirdLeft.dup({ "x" : "screenOriginX+((screenSizeX/3)*2)" });
-
-var dellTwoThirdsLeft = dellFull.dup({ "width" : "(screenSizeX*2)/3" });
-var dellTwoThirdsRight =  dellTwoThirdsLeft.dup({ "x" : "screenOriginX+((screenSizeX*2)/3)" });
-
-var dellQuaterLeft = dellFull.dup({ "width" : "screenSizeX/4" });
-var dellQuaterMidL = dellQuaterLeft.dup({ "x" : "screenOriginX+(screenSizeX/4)" });
-var dellQuaterMidR = dellQuaterLeft.dup({ "x" : "screenOriginX+((screenSizeX/4)*2)" });
-var dellQuaterRight = dellQuaterLeft.dup({ "x" : "screenOriginX+((screenSizeX/4)*3)" });
-
-// Laptop
-
-var lapLeft = lapFull.dup({ "width" : "screenSizeX/2" });
-var lapRight = lapLeft.dup({ "x" : "screenOriginX+(screenSizeX/2)" });
-
-var lapThirdLeft = lapFull.dup({ "width" : "screenSizeX/3" });
-var lapThirdMid = lapThirdLeft.dup({ "x" : "screenOriginX+(screenSizeX/3)" });
-var lapThirdRight =  lapThirdLeft.dup({ "x" : "screenOriginX+((screenSizeX/3)*2)" });
-
-var lapTwoThirdsLeft = lapFull.dup({ "width" : "(screenSizeX*2)/3" });
-var lapTwoThirdsRight =  lapTwoThirdsLeft.dup({ "x" : "screenOriginX+((screenSizeX*2)/3)" });
-
-var lapQuaterLeft = lapFull.dup({ "width" : "screenSizeX/4" });
-var lapQuaterMidL = lapQuaterLeft.dup({ "x" : "screenOriginX+(screenSizeX/4)" });
-var lapQuaterMidR = lapQuaterLeft.dup({ "x" : "screenOriginX+((screenSizeX/4)*2)" });
-var lapQuaterRight = lapQuaterLeft.dup({ "x" : "screenOriginX+((screenSizeX/4)*3)" });
+function hideApp(app) {
+  return S.op("hide", { "app" : app });
+}
 
 
 // 2 monitor layout
 var twoMonitorLayout = S.lay("twoMonitor", {
+  "_before_" : { "operations" : [hideApp('MAMP'), hideApp('MAMP Pro')]},
+  // Right
+  "Finder" : {
+    "operations" : [position(40, 100, 0, 0, rightMonitor)],
+    "repeat" : true
+  },
   "Google Chrome" : {
-    "operations" : [tboltLeft],
-    "repeat" : true
-  },
-  "Safari" : {
-    "operations" : [tboltLeft],
-    "repeat" : true
-  },
-  "Firefox" : {
-    "operations" : [tboltLeft],
-    "repeat" : true
-  },
-  "Calendar" : {
-    "operations" : [calendar],
-    "repeat" : true
-  },
-  "Atom" : {
-    "operations" : [tboltRight],
-    "repeat" : true
-  },
-  "Messages" : {
-    "operations" : [dellThirdLeft],
-    "repeat" : true
-  },
-  "Things" : {
-    "operations" : [dellQuaterRight],
-    "repeat" : true
-  },
-  "Mail" : {
-    "operations" : [dellRight],
-    "repeat" : true
-  },
-  "Microsoft Outlook" : {
-    "operations" : [dellLeft],
-    "repeat" : true
-  },
-  "Airmail" : {
-    "operations" : [dellLeft],
-    "repeat" : true
-  },
-  "Terminal" : {
-    "operations" : [dellThirdRight],
-    "repeat" : true
-  },
-  "Reeder" : {
-    "operations" : [reader],
-    "repeat" : true
-  },
-  "Slack" : {
-    "operations" : [dellThirdLeft],
-    "repeat" : true
-  },
-  "Cisco Jabber" : {
-    "operations" : [jabber],
-    "repeat" : true
-  },
-  "SourceTree" : {
-    // "operations" : [dellQuaterMidR],
     "operations" : [function(windowObject) {
+      // I want all Google Chrome windows to use the rightMain operation *unless* it is a Developer Tools window.
+      // In that case I want it to use the leftRight operation. I can't use title-order-regex here because if it
+      // doesn't see the regex, it won't skip the leftRight operation and that will cause one of my other Chrome
+      // windows to use it which I don't want. Also, I could have multiple Developer Tools windows which also
+      // makes title-order-regex unusable. So instead I just write my own free form operation.
       var title = windowObject.title();
-      if (title !== undefined && title.match("SourceTree")) {
-        windowObject.doOperation(dellQuaterLeft);
+      if (title !== undefined && title.match(/^Developer\sTools\s-\s.+$/)) {
+        windowObject.doOperation( position(40, 100, 60, 0, leftMonitor) );
       } else {
-        windowObject.doOperation(sourceTreeMain);
+        windowObject.doOperation( position(50, 100, 0, 0, rightMonitor) );
       }
     }],
     "ignore-fail" : true,
     "repeat" : true
   },
-  "Notes" : {
-    "operations" : [notes],
+  "Safari" : {
+    "operations" : [position(50, 100, 0, 0, rightMonitor)],
     "repeat" : true
-  }
+  },
+  "Firefox" : {
+    "operations" : [position(50, 100, 0, 0, rightMonitor)],
+    "repeat" : true
+  },
+  "Atom" : {
+    "operations" : [position(50, 100, 50, 0, rightMonitor)],
+    "repeat" : true
+  },
+  // Left
+  "Photoshop CC" : {
+    "operations" : [position(100, 100, 0, 0, leftMonitor)],
+    "repeat" : true
+  },
+  "InDesign CC" : {
+    "operations" : [position(100, 100, 0, 0, leftMonitor)],
+    "repeat" : true
+  },
+  "Illustrator CC" : {
+    "operations" : [position(100, 100, 0, 0, leftMonitor)],
+    "repeat" : true
+  },
+  // Left
+  "Calendar" : {
+    "operations" : [position(50, 100, 25, 0, leftMonitor)],
+    "repeat" : true
+  },
+  "Messages" : {
+    "operations" : [position(25, 100, 0, 0, leftMonitor)],
+    "repeat" : true
+  },
+  "Things" : {
+    "operations" : [position(25, 100, 75, 0, leftMonitor)],
+    "repeat" : true
+  },
+  "Jabber" : {
+    "operations" : [function(windowObject) {
+      var title = windowObject.title();
+      if (title !== undefined && title.match("Cisco Jabber")) {
+        windowObject.doOperation(position(25, 100, 0, 0, leftMonitor));
+      } else {
+        windowObject.doOperation(position(25, 100, 0, 0, leftMonitor));
+      }
+    }],
+    "repeat" : true
+  },
+  // Left
+  "Mail" : {
+    "operations" : [position(50, 100, 50, 0, leftMonitor)],
+    "repeat" : true
+  },
+  "Microsoft Outlook" : {
+    "operations" : [position(50, 100, 0, 0, leftMonitor)],
+    "repeat" : true
+  },
+  "Airmail" : {
+    "operations" : [position(50, 100, 0, 0, leftMonitor)],
+    "repeat" : true
+  },
+  // Left
+  "Terminal" : {
+    "operations" : [position(40, 100, 60, 0, leftMonitor)],
+    "repeat" : true
+  },
+  "SourceTree" : {
+    "operations" : [function(windowObject) {
+      var title = windowObject.title();
+      if (title !== undefined && title.match("SourceTree")) {
+        windowObject.doOperation(position(20, 100, 0, 0, leftMonitor));
+      } else {
+        windowObject.doOperation(position(40, 100, 20, 0, leftMonitor));
+      }
+    }],
+    "ignore-fail" : true,
+    "repeat" : true
+  },
+  "CodeKit" : {
+    "operations" : [position(40, 40, 20, 60, leftMonitor)],
+    "repeat" : true
+  },
+  "Reeder" : {
+    "operations" : [position(35, 100, 65, 0, leftMonitor)],
+    "repeat" : true
+  },
+  // Left 4
+  "Slack" : {
+    "operations" : [position(35, 100, 0, 0, leftMonitor)],
+    "repeat" : true
+  },
+  "Notes" : {
+    "operations" : [position(30, 100, 35, 0, leftMonitor)],
+    "repeat" : true
+  },
 });
 
 // 1 monitor layout
 var oneMonitorLayout = S.lay("oneMonitor", {
-  "Google Chrome" : {
-    "operations" : [lapFull],
-    "repeat" : true
-  },
-  "Safari" : {
-    "operations" : [lapFull],
-    "repeat" : true
-  },
-  "Firefox" : {
-    "operations" : [lapFull],
-    "repeat" : true
-  },
-  "Calendar" : {
-    "operations" : [lapTwoThirdsLeft],
-    "repeat" : true
-  },
-  "Atom" : {
-    "operations" : [lapRight],
-    "repeat" : true
-  },
-  "Messages" : {
-    "operations" : [lapThirdRight],
-    "repeat" : true
-  },
-  "Things" : {
-    "operations" : [lapThirdRight],
-    "repeat" : true
-  },
-  "Mail" : {
-    "operations" : [lapFull],
-    "repeat" : true
-  },
-  "Microsoft Outlook" : {
-    "operations" : [lapFull],
-    "repeat" : true
-  },
-  "Airmail" : {
-    "operations" : [lapFull],
-    "repeat" : true
-  },
-  "Terminal" : {
-    "operations" : [lapLeft],
-    "repeat" : true
-  },
-  "Reeder" : {
-    "operations" : [lapFull],
-    "repeat" : true
-  },
-  "Slack" : {
-    "operations" : [lapFull],
-    "repeat" : true
-  },
-  "SourceTree" : {
-    "operations" : [lapLeft],
-    "repeat" : true
-  },
-  "Notes" : {
-    "operations" : [lapRight],
-    "repeat" : true
-  }
+
+});
+
+var laptopExternalLayout = S.lay("oneMonitor", {
+
+});
+
+var laptopLayout = S.lay("oneMonitor", {
+
 });
 
 // Defaults
 S.def(2, twoMonitorLayout);
 S.def(1, oneMonitorLayout);
+S.def(1, laptopLayout);
+S.def(1, laptopExternalLayout);
+//
+// // Layout Operations
+var twoMonitor = S.op("snapshot", { "name" : twoMonitorLayout });
+var oneMonitor = S.op("snapshot", { "name" : oneMonitorLayout });
+var laptopMonitor = S.op("snapshot", { "name" : laptopLayout });
+var laptopExternalMonitor = S.op("snapshot", { "name" : laptopExternalLayout });
 
-// Layout Operations
-var twoMonitor = S.op("layout", { "name" : twoMonitorLayout });
-var oneMonitor = S.op("layout", { "name" : oneMonitorLayout });
+
+
 var universalLayout = function() {
-  // Should probably make sure the resolutions match but w/e
-  S.log("SCREEN COUNT: "+S.screenCount());
-  if (S.screenCount() === 2) {
-    twoMonitor.run();
-  } else if (S.screenCount() === 1) {
-    oneMonitor.run();
-  }
+  slate.eachApp(function(appObject) {
+    appObject.eachWindow(function(windowObject) {
+      slate.log(appObject.name() + " - " + windowObject.title());
+    });
+  });
+
+  slate.default(["2560x1440", "2560x1440"], twoMonitor);
+  slate.default(["2560x1440"], oneMonitor);
+  slate.default(["2560x1440", "1280x800"], oneMonitor);
+  slate.default(["1280x800"], laptopMonitor);
+
+
 };
 
 // Batch bind everything. Less typing.
 S.bnda({
   // Layout Bindings
   "padEnter:ctrl" : universalLayout,
-  "space:ctrl" : universalLayout,
-
-  // Basic Location Bindings
-  // "pad0:ctrl" : lapLeft,
-  // "[:ctrl" : lapLeft,
-  // "pad.:ctrl" : lapFull,
-  // "]:ctrl" : lapFull,
-  // "pad1:ctrl" : tboltLeftBot,
-  // "pad2:ctrl" : tboltMidBot,
-  // "pad3:ctrl" : tboltRightBot,
-  // "pad4:ctrl" : tboltLeftTop,
-  // "pad5:ctrl" : tboltMidTop,
-  // "pad6:ctrl" : tboltRightTop,
-  // "pad7:ctrl" : tboltLeft,
-  // "pad8:ctrl" : tboltMid,
-  // "pad9:ctrl" : tboltRight,
-  // "pad=:ctrl" : tboltFull,
 
   // Resize Bindings
   // NOTE: some of these may *not* work if you have not removed the expose/spaces/mission control bindings
-  "right:ctrl,shift,alt" : S.op("resize", { "width" : "+10%", "height" : "+0" }),
-  "left:ctrl,shift,alt" : S.op("resize", { "width" : "-10%", "height" : "+0" }),
-  "up:ctrl,shift,alt" : S.op("resize", { "width" : "+0", "height" : "-10%" }),
-  "down:ctrl,shift,alt" : S.op("resize", { "width" : "+0", "height" : "+10%" }),
+  "right:ctrl,shift,alt" : S.op("resize", { "width" : "+5%", "height" : "+0" }),
+  "left:ctrl,shift,alt" : S.op("resize", { "width" : "-5%", "height" : "+0" }),
+  "up:ctrl,shift,alt" : S.op("resize", { "width" : "+0", "height" : "-5%" }),
+  "down:ctrl,shift,alt" : S.op("resize", { "width" : "+0", "height" : "+5%" }),
 
-  "right:ctrl,shift,cmd" : S.op("resize", { "width" : "-10%", "height" : "+0", "anchor" : "bottom-right" }),
-  "left:ctrl,shift,cmd" : S.op("resize", { "width" : "+10%", "height" : "+0", "anchor" : "bottom-right" }),
-  "up:ctrl,shift,cmd" : S.op("resize", { "width" : "+0", "height" : "+10%", "anchor" : "bottom-right" }),
-  "down:ctrl,shift,cmd" : S.op("resize", { "width" : "+0", "height" : "-10%", "anchor" : "bottom-right" }),
+  "right:ctrl,shift,cmd" : S.op("resize", { "width" : "-5%", "height" : "+0", "anchor" : "bottom-right" }),
+  "left:ctrl,shift,cmd" : S.op("resize", { "width" : "+5%", "height" : "+0", "anchor" : "bottom-right" }),
+  "up:ctrl,shift,cmd" : S.op("resize", { "width" : "+0", "height" : "+5%", "anchor" : "bottom-right" }),
+  "down:ctrl,shift,cmd" : S.op("resize", { "width" : "+0", "height" : "-5%", "anchor" : "bottom-right" }),
 
   // Push Bindings
   // NOTE: some of these may *not* work if you have not removed the expose/spaces/mission control bindings
-  "right:ctrl,alt" : S.op("push", { "direction" : "right", "style" : "bar-resize:screenSizeX/2" }),
-  "left:ctrl,alt" : S.op("push", { "direction" : "left", "style" : "bar-resize:screenSizeX/2" }),
-  // "up:ctrl;shift" : S.op("push", { "direction" : "up", "style" : "bar-resize:screenSizeY/2" }),
-  // "down:ctrl;shift" : S.op("push", { "direction" : "down", "style" : "bar-resize:screenSizeY/2" }),
+  "right:ctrl,alt" : S.op("push", { "direction" : "right" }),
+  "left:ctrl,alt" : S.op("push", { "direction" : "left" }),
+  "up:ctrl;alt" : S.op("push", { "direction" : "up" }),
+  "down:ctrl;alt" : S.op("push", { "direction" : "down" }),
 
   // Nudge Bindings
   // NOTE: some of these may *not* work if you have not removed the expose/spaces/mission control bindings
-  "right:ctrl,alt,cmd,shift" : S.op("nudge", { "x" : "+10%", "y" : "+0" }),
-  "left:ctrl,alt,cmd,shift" : S.op("nudge", { "x" : "-10%", "y" : "+0" }),
-  "up:ctrl,alt,cmd,shift" : S.op("nudge", { "x" : "+0", "y" : "-10%" }),
-  "down:ctrl,alt,cmd,shift" : S.op("nudge", { "x" : "+0", "y" : "+10%" }),
+  "right:ctrl,alt,cmd,shift" : S.op("nudge", { "x" : "+5%", "y" : "+0" }),
+  "left:ctrl,alt,cmd,shift" : S.op("nudge", { "x" : "-5%", "y" : "+0" }),
+  "up:ctrl,alt,cmd,shift" : S.op("nudge", { "x" : "+0", "y" : "-5%" }),
+  "down:ctrl,alt,cmd,shift" : S.op("nudge", { "x" : "+0", "y" : "+5%" }),
 
   // Throw Bindings
   // NOTE: some of these may *not* work if you have not removed the expose/spaces/mission control bindings
-  "left:ctrl,alt,cmd" : S.op("throw", { "screen" : leftScreenRef, "width" : "screenSizeX/2", "height" : "screenSizeY" }),
-  "right:ctrl,alt,cmd" : S.op("throw", { "screen" : rightScreenRef, "width" : "screenSizeX/2", "height" : "screenSizeY" }),
-  // "pad3:ctrl;alt" : S.op("throw", { "screen" : "0", "width" : "screenSizeX/2", "height" : "screenSizeY" }),
+  "left:ctrl,alt,cmd" : S.op("throw", { "screen" : leftMonitor }),
+  "right:ctrl,alt,cmd" : S.op("throw", { "screen" : rightMonitor }),
 
-  // Focus Bindings
-  // NOTE: some of these may *not* work if you have not removed the expose/spaces/mission control bindings
-  // "l:cmd" : S.op("focus", { "direction" : "right" }),
-  // "h:cmd" : S.op("focus", { "direction" : "left" }),
-  // "k:cmd" : S.op("focus", { "direction" : "up" }),
-  // "j:cmd" : S.op("focus", { "direction" : "down" }),
-  // "k:cmd;alt" : S.op("focus", { "direction" : "behind" }),
-  // "j:cmd;alt" : S.op("focus", { "direction" : "behind" }),
-  // "right:cmd" : S.op("focus", { "direction" : "right" }),
-  // "left:cmd" : S.op("focus", { "direction" : "left" }),
-  // "up:cmd" : S.op("focus", { "direction" : "up" }),
-  // "down:cmd" : S.op("focus", { "direction" : "down" }),
-  // "up:cmd;alt" : S.op("focus", { "direction" : "behind" }),
-  // "down:cmd;alt" : S.op("focus", { "direction" : "behind" }),
-
-  // Window Hints
-  // "esc:cmd" : S.op("hint"),
-
-  // Switch currently doesn't work well so I'm commenting it out until I fix it.
-  // "tab:cmd" : S.op("switch"),
-
-  // Grid
   "esc:ctrl" : S.op("grid")
 });
+
+universalLayout();
 
 // Test Cases
 S.src(".slate.test", true);

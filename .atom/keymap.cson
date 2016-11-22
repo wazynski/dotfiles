@@ -24,9 +24,6 @@
 # If you are unfamiliar with CSON, you can read more about it here:
 # https://github.com/bevry/cson#what-is-cson
 
-'atom-text-editor':
-  'cmd-/': 'block-comment:toggle'
-
 'atom-text-editor[data-grammar="text html basic erb"]:not([mini]), atom-text-editor[data-grammar~="jade"]:not([mini]), atom-text-editor[data-grammar~="css"]:not([mini]), atom-text-editor[data-grammar~="sass"]:not([mini])':
   'tab': 'emmet:expand-abbreviation-with-tab'
 

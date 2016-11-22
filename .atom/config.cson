@@ -47,6 +47,7 @@
     ignoredNames: [
       ".codekit-cache"
     ]
+    telemetryConsent: "no"
     themes: [
       "seti-ui"
       "railscast-theme"
@@ -71,7 +72,7 @@
   "linter-php":
     executablePath: "/usr/bin/php"
   "linter-rubocop":
-    command: "/Users/tomskarbek/.rbenv/versions/2.2.2/bin/rubocop"
+    command: "/Users/tomskarbek/.rbenv/versions/2.3.1/bin/rubocop"
   "linter-ruby": {}
   "linter-scss-lint":
     executablePath: "/Users/tomskarbek/.rbenv/shims/scss-lint"
