@@ -11,6 +11,8 @@ S.cfga({
 
 var leftMonitor = "0";
 var rightMonitor = "1";
+var apps = [];
+var openWindows = [];
 
 // Position Function
 function position(w, h, x, y, screen) {
@@ -32,6 +34,17 @@ function hideApp(app) {
   return S.op("hide", { "app" : app });
 }
 
+function matchInArray (array, value) {
+  var i;
+  for (i=0; i < array.length; i++) {
+    slate.log(array[i] + " - " + " (" + value + ") " + array[i].match(value));
+    if (array[i].match(value)) {
+      return true;
+    }
+  }
+  return false;
+}
+
 
 // 2 monitor layout
 var twoMonitorLayout = S.lay("twoMonitor", {
@@ -50,7 +63,11 @@ var twoMonitorLayout = S.lay("twoMonitor", {
       // makes title-order-regex unusable. So instead I just write my own free form operation.
       var title = windowObject.title();
       if (title !== undefined && title.match(/^Developer\sTools\s-\s.+$/)) {
-        windowObject.doOperation( position(40, 100, 60, 0, leftMonitor) );
+        // if ( _.contains(apps, "Terminal") )  {
+        //   windowObject.doOperation( position(40, 50, 60, 50, leftMonitor) );
+        // } else {
+          windowObject.doOperation( position(40, 100, 60, 0, leftMonitor) );
+        // }
       } else {
         windowObject.doOperation( position(50, 100, 0, 0, rightMonitor) );
       }
@@ -122,7 +139,14 @@ var twoMonitorLayout = S.lay("twoMonitor", {
   },
   // Left
   "Terminal" : {
-    "operations" : [position(40, 100, 60, 0, leftMonitor)],
+    "operations" : [ function(windowObject) {
+      // if (matchInArray(openWindows, /^Developer\sTools\s-\s.+$/))  {
+        windowObject.doOperation(position(40, 100, 60, 0, leftMonitor));
+      // } else {
+        // windowObject.doOperation(position(40, 100, 60, 0, leftMonitor));
+      // }
+    }
+  ],
     "repeat" : true
   },
   "SourceTree" : {
@@ -131,7 +155,11 @@ var twoMonitorLayout = S.lay("twoMonitor", {
       if (title !== undefined && title.match("SourceTree")) {
         windowObject.doOperation(position(20, 100, 0, 0, leftMonitor));
       } else {
-        windowObject.doOperation(position(40, 100, 20, 0, leftMonitor));
+        if (_.contains(apps, "CodeKit"))  {
+          windowObject.doOperation(position(40, 60, 20, 0, leftMonitor));
+        } else {
+          windowObject.doOperation(position(40, 100, 20, 0, leftMonitor));
+        }
       }
     }],
     "ignore-fail" : true,
@@ -176,26 +204,40 @@ S.def(1, laptopLayout);
 S.def(1, laptopExternalLayout);
 //
 // // Layout Operations
-var twoMonitor = S.op("snapshot", { "name" : twoMonitorLayout });
-var oneMonitor = S.op("snapshot", { "name" : oneMonitorLayout });
-var laptopMonitor = S.op("snapshot", { "name" : laptopLayout });
-var laptopExternalMonitor = S.op("snapshot", { "name" : laptopExternalLayout });
+var twoMonitor = S.op("layout", { "name" : twoMonitorLayout });
+var oneMonitor = S.op("layout", { "name" : oneMonitorLayout });
+var laptopMonitor = S.op("layout", { "name" : laptopLayout });
+var laptopExternalMonitor = S.op("layout", { "name" : laptopExternalLayout });
 
 
 
 var universalLayout = function() {
-  slate.eachApp(function(appObject) {
-    appObject.eachWindow(function(windowObject) {
-      slate.log(appObject.name() + " - " + windowObject.title());
-    });
-  });
+  apps = [];
+  openWindows = [];
 
-  slate.default(["2560x1440", "2560x1440"], twoMonitor);
-  slate.default(["2560x1440"], oneMonitor);
-  slate.default(["2560x1440", "1280x800"], oneMonitor);
-  slate.default(["1280x800"], laptopMonitor);
+  // slate.eachApp(function(appObject) {
+  //   apps.push(appObject.name());
+  //   appObject.eachWindow(function(windowObject) {
+  //     openWindows.push(windowObject.title());
+  //     // slate.log(appObject.name() + " - " + windowObject.title());
+  //   });
+  // });
+  //
+  // slate.log(apps);
+  // slate.log(openWindows);
 
+  // slate.default(["2560x1440", "2560x1440"], twoMonitor);
+  // slate.default(["2560x1440"], oneMonitor);
+  // slate.default(["2560x1440", "1280x800"], oneMonitor);
+  // slate.default(["1280x800"], laptopMonitor);
 
+  // Should probably make sure the resolutions match but w/e
+  S.log("SCREEN COUNT: "+S.screenCount());
+  if (S.screenCount() === 2) {
+    twoMonitor.run();
+  } else if (S.screenCount() === 1) {
+    oneMonitor.run();
+  }
 };
 
 // Batch bind everything. Less typing.
