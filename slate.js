@@ -63,11 +63,11 @@ var twoMonitorLayout = S.lay("twoMonitor", {
       // makes title-order-regex unusable. So instead I just write my own free form operation.
       var title = windowObject.title();
       if (title !== undefined && title.match(/^Developer\sTools\s-\s.+$/)) {
-        // if ( _.contains(apps, "Terminal") )  {
-        //   windowObject.doOperation( position(40, 50, 60, 50, leftMonitor) );
-        // } else {
+        if ( _.contains(apps, "Terminal") )  {
+          windowObject.doOperation( position(40, 50, 60, 50, leftMonitor) );
+        } else {
           windowObject.doOperation( position(40, 100, 60, 0, leftMonitor) );
-        // }
+        }
       } else {
         windowObject.doOperation( position(50, 100, 0, 0, rightMonitor) );
       }
@@ -140,11 +140,11 @@ var twoMonitorLayout = S.lay("twoMonitor", {
   // Left
   "Terminal" : {
     "operations" : [ function(windowObject) {
-      // if (matchInArray(openWindows, /^Developer\sTools\s-\s.+$/))  {
+      if (matchInArray(openWindows, /^Developer\sTools\s-\s.+$/))  {
+        windowObject.doOperation(position(40, 50, 60, 0, leftMonitor));
+      } else {
         windowObject.doOperation(position(40, 100, 60, 0, leftMonitor));
-      // } else {
-        // windowObject.doOperation(position(40, 100, 60, 0, leftMonitor));
-      // }
+      }
     }
   ],
     "repeat" : true
@@ -215,13 +215,13 @@ var universalLayout = function() {
   apps = [];
   openWindows = [];
 
-  // slate.eachApp(function(appObject) {
-  //   apps.push(appObject.name());
-  //   appObject.eachWindow(function(windowObject) {
-  //     openWindows.push(windowObject.title());
-  //     // slate.log(appObject.name() + " - " + windowObject.title());
-  //   });
-  // });
+  slate.eachApp(function(appObject) {
+    apps.push(appObject.name());
+    appObject.eachWindow(function(windowObject) {
+      openWindows.push(windowObject.title());
+      // slate.log(appObject.name() + " - " + windowObject.title());
+    });
+  });
   //
   // slate.log(apps);
   // slate.log(openWindows);
