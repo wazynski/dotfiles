@@ -4,7 +4,10 @@ S.cfga({
   "secondsBetweenRepeat" : 0.1,
   "checkDefaultsOnLoad" : true,
   "focusCheckWidthMax" : 3000,
-  "orderScreensLeftToRight" : true
+  "orderScreensLeftToRight" : true,
+  "windowHintsFontSize" : 100,
+  "windowHintsHeight" : 200,
+  "windowHintsWidth" : 200,
 });
 
 // Monitors
@@ -13,6 +16,7 @@ var leftMonitor = "0";
 var rightMonitor = "1";
 var apps = [];
 var openWindows = [];
+
 
 // Position Function
 function position(w, h, x, y, screen) {
@@ -277,7 +281,8 @@ S.bnda({
   "right:ctrl,alt,cmd" : S.op("throw", { "screen" : rightMonitor }),
 
   "esc:ctrl" : S.op("grid"),
-  "pad.:ctrl" : S.op("hint")
+  "pad.:ctrl" : S.op("hint", {"characters" : "123456789QWERTY"}),
+  "pad0:ctrl" : S.op("switch")
 });
 
 universalLayout();
