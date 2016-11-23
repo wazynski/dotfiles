@@ -14,6 +14,7 @@ S.cfga({
 
 var leftMonitor = "0";
 var rightMonitor = "1";
+var desktop = "2560x1440"
 var apps = [];
 var openWindows = [];
 
@@ -190,28 +191,161 @@ var twoMonitorLayout = S.lay("twoMonitor", {
 
 // 1 monitor layout
 var oneMonitorLayout = S.lay("oneMonitor", {
-
+  "_before_" : { "operations" : [hideApp('MAMP'), hideApp('MAMP Pro')]},
+  // // Right
+  "Finder" : {
+    "operations" : [position(40, 100, 0, 0, desktop)],
+    "repeat" : true
+  },
+  "Google Chrome" : {
+    "operations" : [function(windowObject) {
+      // I want all Google Chrome windows to use the rightMain operation *unless* it is a Developer Tools window.
+      // In that case I want it to use the leftRight operation. I can't use title-order-regex here because if it
+      // doesn't see the regex, it won't skip the leftRight operation and that will cause one of my other Chrome
+      // windows to use it which I don't want. Also, I could have multiple Developer Tools windows which also
+      // makes title-order-regex unusable. So instead I just write my own free form operation.
+      var title = windowObject.title();
+      if (title !== undefined && title.match(/^Developer\sTools\s-\s.+$/)) {
+        if ( _.contains(apps, "Terminal") )  {
+          windowObject.doOperation( position(40, 50, 60, 50, desktop) );
+        } else {
+          windowObject.doOperation( position(40, 100, 60, 0, desktop) );
+        }
+      } else {
+        windowObject.doOperation( position(50, 100, 0, 0, desktop) );
+      }
+    }],
+    "ignore-fail" : true,
+    "repeat" : true
+  },
+  "Safari" : {
+    "operations" : [position(50, 100, 0, 0, desktop)],
+    "repeat" : true
+  },
+  "Firefox" : {
+    "operations" : [position(50, 100, 0, 0, desktop)],
+    "repeat" : true
+  },
+  "Atom" : {
+    "operations" : [position(50, 100, 50, 0, desktop)],
+    "repeat" : true
+  },
+  // Left
+  "Photoshop CC" : {
+    "operations" : [position(100, 100, 0, 0, desktop)],
+    "repeat" : true
+  },
+  "InDesign CC" : {
+    "operations" : [position(100, 100, 0, 0, desktop)],
+    "repeat" : true
+  },
+  "Adobe Illustrator CC 2017" : {
+    "operations" : [position(100, 100, 0, 0, desktop)],
+    "repeat" : true
+  },
+  // Left
+  "Calendar" : {
+    "operations" : [position(50, 100, 25, 0, desktop)],
+    "repeat" : true
+  },
+  "Messages" : {
+    "operations" : [position(25, 100, 0, 0, desktop)],
+    "repeat" : true
+  },
+  "Things" : {
+    "operations" : [position(25, 100, 75, 0, desktop)],
+    "repeat" : true
+  },
+  "Jabber" : {
+    "operations" : [function(windowObject) {
+      var title = windowObject.title();
+      if (title !== undefined && title.match("Cisco Jabber")) {
+        windowObject.doOperation(position(25, 100, 0, 0, desktop));
+      } else {
+        windowObject.doOperation(position(25, 100, 0, 0, desktop));
+      }
+    }],
+    "repeat" : true
+  },
+  // Left
+  "Mail" : {
+    "operations" : [position(50, 100, 50, 0, desktop)],
+    "repeat" : true
+  },
+  "Microsoft Outlook" : {
+    "operations" : [position(50, 100, 0, 0, desktop)],
+    "repeat" : true
+  },
+  "Airmail" : {
+    "operations" : [position(50, 100, 0, 0, desktop)],
+    "repeat" : true
+  },
+  // Left
+  "Terminal" : {
+    "operations" : [ function(windowObject) {
+      if (matchInArray(openWindows, /^Developer\sTools\s-\s.+$/))  {
+        windowObject.doOperation(position(40, 50, 60, 0, desktop));
+      } else {
+        windowObject.doOperation(position(40, 100, 60, 0, desktop));
+      }
+    }
+  ],
+    "repeat" : true
+  },
+  "SourceTree" : {
+    "operations" : [function(windowObject) {
+      var title = windowObject.title();
+      if (title !== undefined && title.match("SourceTree")) {
+        windowObject.doOperation(position(20, 100, 0, 0, desktop));
+      } else {
+        if (_.contains(apps, "CodeKit"))  {
+          windowObject.doOperation(position(40, 60, 20, 0, desktop));
+        } else {
+          windowObject.doOperation(position(40, 100, 20, 0, desktop));
+        }
+      }
+    }],
+    "ignore-fail" : true,
+    "repeat" : true
+  },
+  "CodeKit" : {
+    "operations" : [position(40, 40, 20, 60, desktop)],
+    "repeat" : true
+  },
+  "Reeder" : {
+    "operations" : [position(35, 100, 65, 0, desktop)],
+    "repeat" : true
+  },
+  // Left 4
+  "Slack" : {
+    "operations" : [position(35, 100, 0, 0, desktop)],
+    "repeat" : true
+  },
+  "Notes" : {
+    "operations" : [position(30, 100, 35, 0, desktop)],
+    "repeat" : true
+  }
 });
-
-var laptopExternalLayout = S.lay("oneMonitor", {
-
-});
-
-var laptopLayout = S.lay("oneMonitor", {
-
-});
+//
+// var laptopExternalLayout = S.lay("oneMonitor", {
+//
+// });
+//
+// var laptopLayout = S.lay("oneMonitor", {
+//
+// });
 
 // Defaults
 S.def(2, twoMonitorLayout);
 S.def(1, oneMonitorLayout);
-S.def(1, laptopLayout);
-S.def(1, laptopExternalLayout);
+// S.def(1, laptopLayout);
+// S.def(1, laptopExternalLayout);
 //
 // // Layout Operations
 var twoMonitor = S.op("layout", { "name" : twoMonitorLayout });
 var oneMonitor = S.op("layout", { "name" : oneMonitorLayout });
-var laptopMonitor = S.op("layout", { "name" : laptopLayout });
-var laptopExternalMonitor = S.op("layout", { "name" : laptopExternalLayout });
+// var laptopMonitor = S.op("layout", { "name" : laptopLayout });
+// var laptopExternalMonitor = S.op("layout", { "name" : laptopExternalLayout });
 
 
 
