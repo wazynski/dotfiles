@@ -96,7 +96,7 @@ var twoMonitorLayout = S.lay("twoMonitor", {
     "operations" : [position(100, 100, 0, 0, leftMonitor)],
     "repeat" : true
   },
-  "Illustrator CC" : {
+  "Adobe Illustrator CC 2017" : {
     "operations" : [position(100, 100, 0, 0, leftMonitor)],
     "repeat" : true
   },
@@ -222,9 +222,9 @@ var universalLayout = function() {
       // slate.log(appObject.name() + " - " + windowObject.title());
     });
   });
-  //
-  // slate.log(apps);
-  // slate.log(openWindows);
+
+  slate.log(apps);
+  slate.log(openWindows);
 
   // slate.default(["2560x1440", "2560x1440"], twoMonitor);
   // slate.default(["2560x1440"], oneMonitor);
@@ -276,7 +276,8 @@ S.bnda({
   "left:ctrl,alt,cmd" : S.op("throw", { "screen" : leftMonitor }),
   "right:ctrl,alt,cmd" : S.op("throw", { "screen" : rightMonitor }),
 
-  "esc:ctrl" : S.op("grid")
+  "esc:ctrl" : S.op("grid"),
+  "pad.:ctrl" : S.op("hint")
 });
 
 universalLayout();
