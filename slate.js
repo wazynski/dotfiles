@@ -416,7 +416,8 @@ S.bnda({
 
   "esc:ctrl" : S.op("grid"),
   "pad.:ctrl" : S.op("hint", {"characters" : "123456789QWERTY"}),
-  "pad0:ctrl" : S.op("switch")
+  "pad0:ctrl" : S.op("switch"),
+  "pad*:ctrl" : S.op("relaunch"),
 });
 
 universalLayout();
