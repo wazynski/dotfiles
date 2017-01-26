@@ -42,7 +42,6 @@
       ]
     disabledPackages: [
       "language-chef"
-      "linter-scss-lint"
       "autocomplete-ruby"
     ]
     ignoredNames: [
@@ -54,7 +53,7 @@
       "railscast-theme"
     ]
   editor:
-    fontSize: 13
+    fontFamily: "menlo"
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
@@ -64,8 +63,11 @@
   "file-icons":
     coloured: false
     onChanges: true
+  fonts:
+    fontFamily: "Hack"
   linter:
     errorPanelHeight: 166
+    showErrorPanel: false
   "linter-foodcritic":
     executablePath: "/Users/tomskarbek/.rbenv/shims/foodcritic"
   "linter-jshint":
@@ -87,10 +89,17 @@
     createOnChange: true
     forceOverwrite: true
   "ruby-test": {}
-  "seti-ui": {}
+  "seti-ui":
+    themeColor: "Red"
   "spell-check": {}
   "tabs-to-spaces": {}
   "tool-bar":
     position: "Left"
+  "tree-view":
+    hideVcsIgnoredFiles: true
+  wakatime:
+    apikey: "Saved in your ~/.wakatime.cfg file"
+  "wakatime-hidden":
+    lastInit: 1485333791
   welcome:
     showOnStartup: false
