@@ -42,7 +42,6 @@
       ]
     disabledPackages: [
       "language-chef"
-      "linter-scss-lint"
       "autocomplete-ruby"
     ]
     ignoredNames: [
@@ -66,17 +65,18 @@
     onChanges: true
   linter:
     errorPanelHeight: 166
+    showErrorPanel: false
   "linter-foodcritic":
-    executablePath: "/Users/tomskarbek/.rbenv/shims/foodcritic"
+    executablePath: "/Users/wazynski/.rbenv/shims/foodcritic"
   "linter-jshint":
     lintInlineJavaScript: true
   "linter-php":
     executablePath: "/usr/bin/php"
   "linter-rubocop":
-    command: "/Users/tomskarbek/.rbenv/versions/2.3.1/bin/rubocop"
+    command: "/Users/wazynski/.rbenv/versions/2.3.3/bin/rubocop"
   "linter-ruby": {}
   "linter-scss-lint":
-    executablePath: "/Users/tomskarbek/.rbenv/shims/scss-lint"
+    executablePath: "/Users/wazynski/.rbenv/versions/2.3.3/bin/scss-lint"
   minimap:
     plugins:
       linter: true
@@ -92,5 +92,9 @@
   "tabs-to-spaces": {}
   "tool-bar":
     position: "Left"
+  wakatime:
+    apikey: "Saved in your ~/.wakatime.cfg file"
+  "wakatime-hidden":
+    lastInit: 1485610007
   welcome:
     showOnStartup: false

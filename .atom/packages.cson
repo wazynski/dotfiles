@@ -40,5 +40,6 @@ packages: [
   "tabs-to-spaces"
   "todo-show"
   "toggle-quotes"
+  "wakatime"
   "windows-carriage-return-remover"
 ]
