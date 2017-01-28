@@ -53,7 +53,7 @@
       "railscast-theme"
     ]
   editor:
-    fontSize: 13
+    fontFamily: "menlo"
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
@@ -63,20 +63,22 @@
   "file-icons":
     coloured: false
     onChanges: true
+  fonts:
+    fontFamily: "Hack"
   linter:
     errorPanelHeight: 166
     showErrorPanel: false
   "linter-foodcritic":
-    executablePath: "/Users/wazynski/.rbenv/shims/foodcritic"
+    executablePath: "/Users/tomskarbek/.rbenv/shims/foodcritic"
   "linter-jshint":
     lintInlineJavaScript: true
   "linter-php":
     executablePath: "/usr/bin/php"
   "linter-rubocop":
-    command: "/Users/wazynski/.rbenv/versions/2.3.3/bin/rubocop"
+    command: "/Users/tomskarbek/.rbenv/versions/2.3.1/bin/rubocop"
   "linter-ruby": {}
   "linter-scss-lint":
-    executablePath: "/Users/wazynski/.rbenv/versions/2.3.3/bin/scss-lint"
+    executablePath: "/Users/tomskarbek/.rbenv/shims/scss-lint"
   minimap:
     plugins:
       linter: true
@@ -87,14 +89,17 @@
     createOnChange: true
     forceOverwrite: true
   "ruby-test": {}
-  "seti-ui": {}
+  "seti-ui":
+    themeColor: "Red"
   "spell-check": {}
   "tabs-to-spaces": {}
   "tool-bar":
     position: "Left"
+  "tree-view":
+    hideVcsIgnoredFiles: true
   wakatime:
     apikey: "Saved in your ~/.wakatime.cfg file"
   "wakatime-hidden":
-    lastInit: 1485610007
+    lastInit: 1485333791
   welcome:
     showOnStartup: false
