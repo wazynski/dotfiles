@@ -191,6 +191,11 @@ var twoMonitorLayout = S.lay("twoMonitor", {
     "operations" : [position(35, 100, 0, 0, leftMonitor)],
     "repeat" : true
   },
+  // Left 4
+  "Discord" : {
+    "operations" : [position(35, 100, 0, 0, leftMonitor)],
+    "repeat" : true
+  },
   "Notes" : {
     "operations" : [position(30, 100, 35, 0, leftMonitor)],
     "repeat" : true
@@ -326,6 +331,11 @@ var oneMonitorLayout = S.lay("oneMonitor", {
   },
   // Left 4
   "Slack" : {
+    "operations" : [position(35, 100, 0, 0, desktop)],
+    "repeat" : true
+  },
+  // Left 4
+  "Discord" : {
     "operations" : [position(35, 100, 0, 0, desktop)],
     "repeat" : true
   },
