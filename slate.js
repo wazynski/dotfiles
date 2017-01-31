@@ -42,7 +42,7 @@ function hideApp(app) {
 function matchInArray (array, value) {
   var i;
   for (i=0; i < array.length; i++) {
-    slate.log(array[i] + " - " + " (" + value + ") " + array[i].match(value));
+    // slate.log(array[i] + " - " + " (" + value + ") " + array[i].match(value));
     if (array[i].match(value)) {
       return true;
     }
@@ -74,7 +74,11 @@ var twoMonitorLayout = S.lay("twoMonitor", {
           windowObject.doOperation( position(40, 100, 60, 0, leftMonitor) );
         }
       } else {
-        windowObject.doOperation( position(50, 100, 0, 0, rightMonitor) );
+        if (matchInArray(apps, "RubyMine"))  {
+          windowObject.doOperation( position(50, 100, 50, 0, leftMonitor) );
+        } else {
+          windowObject.doOperation( position(50, 100, 0, 0, rightMonitor) );
+        }
       }
     }],
     "ignore-fail" : true,
@@ -90,6 +94,10 @@ var twoMonitorLayout = S.lay("twoMonitor", {
   },
   "Atom" : {
     "operations" : [position(50, 100, 50, 0, rightMonitor)],
+    "repeat" : true
+  },
+  "RubyMine" : {
+    "operations" : [position(100, 100, 0, 0, rightMonitor)],
     "repeat" : true
   },
   // Left
@@ -357,7 +365,7 @@ var universalLayout = function() {
     apps.push(appObject.name());
     appObject.eachWindow(function(windowObject) {
       openWindows.push(windowObject.title());
-      // slate.log(appObject.name() + " - " + windowObject.title());
+        // slate.log(appObject.name() + " - " + windowObject.title());
     });
   });
 
