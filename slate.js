@@ -74,11 +74,7 @@ var twoMonitorLayout = S.lay("twoMonitor", {
           windowObject.doOperation( position(40, 100, 60, 0, leftMonitor) );
         }
       } else {
-        if (matchInArray(apps, "RubyMine"))  {
-          windowObject.doOperation( position(50, 100, 50, 0, leftMonitor) );
-        } else {
-          windowObject.doOperation( position(50, 100, 0, 0, rightMonitor) );
-        }
+        windowObject.doOperation( position(50, 100, 0, 0, desktop) );
       }
     }],
     "ignore-fail" : true,
@@ -97,7 +93,7 @@ var twoMonitorLayout = S.lay("twoMonitor", {
     "repeat" : true
   },
   "RubyMine" : {
-    "operations" : [position(100, 100, 0, 0, rightMonitor)],
+    "operations" : [position(50, 100, 50, 0, rightMonitor)],
     "repeat" : true
   },
   // Left
@@ -148,6 +144,10 @@ var twoMonitorLayout = S.lay("twoMonitor", {
   },
   "Airmail" : {
     "operations" : [position(50, 100, 0, 0, leftMonitor)],
+    "repeat" : true
+  },
+  "Tower" : {
+    "operations" : [position(60, 100, 0, 0, leftMonitor)],
     "repeat" : true
   },
   // Left

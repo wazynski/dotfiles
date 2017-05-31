@@ -24,39 +24,41 @@
     readyMadeConfigs: "csscomb"
   "atom-material-ui":
     colors:
-      abaseColor: "#8c888d"
-      accentColor: "#fdfffd"
+      abaseColor: "#28827d"
+      accentColor: "#a91a22"
+      genAccent: true
+      paintCursor: true
     fonts: {}
     tabs: {}
     treeView:
       compactList: true
+    ui:
+      panelContrast: true
   "auto-update-packages": {}
   "autocomplete-plus": {}
   "autocomplete-ruby":
     rsensePath: "~/.rbenv/shims/rsense"
   "clipboard-plus": {}
   core:
+    closeDeletedFileTabs: true
     customFileTypes:
       "text.html.ruby": [
         "erb"
       ]
-    disabledPackages: [
-      "language-chef"
-      "autocomplete-ruby"
-    ]
     ignoredNames: [
       ".codekit-cache"
     ]
     telemetryConsent: "no"
     themes: [
-      "seti-ui"
-      "railscast-theme"
+      "atom-material-ui"
+      "one-dark-syntax"
     ]
+    titleBar: "custom-inset"
   editor:
-    fontFamily: "menlo"
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
+    tabType: "soft"
   emmet: {}
   "exception-reporting":
     userId: "d4057cb0-edf4-1925-2d5d-f2e1ef28f601"
@@ -64,10 +66,12 @@
     coloured: false
     onChanges: true
   fonts:
-    fontFamily: "Hack"
-  linter:
-    errorPanelHeight: 166
-    showErrorPanel: false
+    fontFamily: "FiraCode"
+  linter: {}
+  "linter-eslint":
+    disableWhenNoEslintConfig: false
+    eslintrcPath: "~/"
+    globalNodePath: "/usr/local"
   "linter-foodcritic":
     executablePath: "/Users/tomskarbek/.rbenv/shims/foodcritic"
   "linter-jshint":
@@ -79,6 +83,8 @@
   "linter-ruby": {}
   "linter-scss-lint":
     executablePath: "/Users/tomskarbek/.rbenv/shims/scss-lint"
+  "linter-ui-default":
+    panelHeight: 69
   minimap:
     plugins:
       linter: true
@@ -100,6 +106,6 @@
   wakatime:
     apikey: "Saved in your ~/.wakatime.cfg file"
   "wakatime-hidden":
-    lastInit: 1485850098
+    lastInit: 1493118402
   welcome:
     showOnStartup: false
