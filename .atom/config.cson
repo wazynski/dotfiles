@@ -69,7 +69,6 @@
     fontFamily: "Hack"
   linter: {}
   "linter-eslint":
-    disableWhenNoEslintConfig: false
     eslintrcPath: "~/"
     globalNodePath: "/usr/local"
   "linter-foodcritic":

@@ -8,6 +8,7 @@ packages: [
   "autocomplete-json"
   "autocomplete-paths"
   "busy-signal"
+  "double-tag"
   "editorconfig"
   "emmet"
   "file-icons"
