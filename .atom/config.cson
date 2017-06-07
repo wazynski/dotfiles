@@ -31,9 +31,8 @@
     fonts: {}
     tabs: {}
     treeView:
-      compactList: true
-    ui:
-      panelContrast: true
+      compactList: false
+    ui: {}
   "auto-update-packages": {}
   "autocomplete-plus": {}
   "autocomplete-ruby":
