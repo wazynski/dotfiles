@@ -50,8 +50,7 @@ function put_spacing() {
 }
 
 function precmd() {
-print -rP '
-$fg[cyan]%n: $fg[yellow]$(get_pwd)$(put_spacing)$(git_prompt_info) $fg[cyan][$(ruby_version)]'
+print -rP '$fg[cyan]%n: $fg[yellow]$(get_pwd)$(put_spacing)$(git_prompt_info) $fg[cyan][$(ruby_version)]'
 }
 
 function ruby_version()

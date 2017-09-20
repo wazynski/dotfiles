@@ -69,31 +69,35 @@ var twoMonitorLayout = S.lay("twoMonitor", {
       var title = windowObject.title();
       if (title !== undefined && title.match(/^Developer\sTools\s-\s.+$/)) {
         if ( _.contains(apps, "Terminal") )  {
-          windowObject.doOperation( position(40, 50, 60, 50, leftMonitor) );
+          windowObject.doOperation( position(30, 100, 70, 0, leftMonitor) );
         } else {
-          windowObject.doOperation( position(40, 100, 60, 0, leftMonitor) );
+          windowObject.doOperation( position(30, 100, 70, 0, leftMonitor) );
         }
       } else {
-        windowObject.doOperation( position(50, 100, 0, 0, desktop) );
+        windowObject.doOperation( position(100, 100, 0, 0, leftMonitor) );
       }
     }],
     "ignore-fail" : true,
     "repeat" : true
   },
   "Safari" : {
-    "operations" : [position(50, 100, 0, 0, rightMonitor)],
+    "operations" : [position(100, 100, 0, 0, leftMonitor)],
     "repeat" : true
   },
   "Firefox" : {
-    "operations" : [position(50, 100, 0, 0, rightMonitor)],
+    "operations" : [position(100, 100, 0, 0, leftMonitor)],
     "repeat" : true
   },
   "Atom" : {
-    "operations" : [position(50, 100, 50, 0, rightMonitor)],
+    "operations" : [position(80, 100, 0, 0, rightMonitor)],
     "repeat" : true
   },
   "RubyMine" : {
-    "operations" : [position(50, 100, 50, 0, rightMonitor)],
+    "operations" : [position(90, 100, 0, 0, rightMonitor)],
+    "repeat" : true
+  },
+  "TogglDesktop" : {
+    "operations" : [position(20, 100, 80, 0, rightMonitor)],
     "repeat" : true
   },
   // Left
@@ -111,31 +115,16 @@ var twoMonitorLayout = S.lay("twoMonitor", {
   },
   // Left
   "Calendar" : {
-    "operations" : [position(50, 100, 25, 0, leftMonitor)],
-    "repeat" : true
-  },
-  "Messages" : {
-    "operations" : [position(25, 100, 0, 0, leftMonitor)],
+    "operations" : [position(75, 100, 0, 0, leftMonitor)],
     "repeat" : true
   },
   "Things" : {
     "operations" : [position(25, 100, 75, 0, leftMonitor)],
     "repeat" : true
   },
-  "Jabber" : {
-    "operations" : [function(windowObject) {
-      var title = windowObject.title();
-      if (title !== undefined && title.match("Cisco Jabber")) {
-        windowObject.doOperation(position(25, 100, 0, 0, leftMonitor));
-      } else {
-        windowObject.doOperation(position(25, 100, 0, 0, leftMonitor));
-      }
-    }],
-    "repeat" : true
-  },
   // Left
   "Mail" : {
-    "operations" : [position(50, 100, 50, 0, leftMonitor)],
+    "operations" : [position(50, 100, 0, 0, leftMonitor)],
     "repeat" : true
   },
   "Microsoft Outlook" : {
@@ -147,39 +136,54 @@ var twoMonitorLayout = S.lay("twoMonitor", {
     "repeat" : true
   },
   "Tower" : {
-    "operations" : [position(60, 100, 0, 0, leftMonitor)],
+    "operations" : [position(50, 50, 0, 0, leftMonitor)],
+    "repeat" : true
+  },
+  "Transmit" : {
+    "operations" : [position(50, 50, 50, 0, leftMonitor)],
     "repeat" : true
   },
   // Left
   "Terminal" : {
     "operations" : [ function(windowObject) {
       if (matchInArray(openWindows, /^Developer\sTools\s-\s.+$/))  {
-        windowObject.doOperation(position(40, 50, 60, 0, leftMonitor));
+        windowObject.doOperation(position(50, 50, 50, 50, leftMonitor));
       } else {
-        windowObject.doOperation(position(40, 100, 60, 0, leftMonitor));
+        windowObject.doOperation(position(50, 50, 50, 50, leftMonitor));
       }
     }
   ],
     "repeat" : true
   },
-  "SourceTree" : {
-    "operations" : [function(windowObject) {
-      var title = windowObject.title();
-      if (title !== undefined && title.match("SourceTree")) {
-        windowObject.doOperation(position(20, 100, 0, 0, leftMonitor));
-      } else {
-        if (_.contains(apps, "CodeKit"))  {
-          windowObject.doOperation(position(40, 60, 20, 0, leftMonitor));
-        } else {
-          windowObject.doOperation(position(40, 100, 20, 0, leftMonitor));
-        }
-      }
-    }],
-    "ignore-fail" : true,
-    "repeat" : true
-  },
+  // "SourceTree" : {
+  //   "operations" : [function(windowObject) {
+  //     var title = windowObject.title();
+  //     if (title !== undefined && title.match("SourceTree")) {
+  //       windowObject.doOperation(position(50, 50, 0, 0, leftMonitor));
+  //     } else {
+  //       if (_.contains(apps, "CodeKit"))  {
+  //         windowObject.doOperation(position(40, 60, 20, 0, leftMonitor));
+  //       } else {
+  //         windowObject.doOperation(position(40, 100, 20, 0, leftMonitor));
+  //       }
+  //     }
+  //   }],
+  //   "ignore-fail" : true,
+  //   "repeat" : true
+  // },
+  // "Versions" : {
+  //   "operations" : [function(windowObject) {
+  //     if (_.contains(apps, "CodeKit"))  {
+  //       windowObject.doOperation(position(50, 50, 0, 0, leftMonitor));
+  //     } else {
+  //       windowObject.doOperation(position(50, 50, 0, 0, leftMonitor));
+  //     }
+  //   }],
+  //   "ignore-fail" : true,
+  //   "repeat" : true
+  // },
   "CodeKit" : {
-    "operations" : [position(40, 40, 20, 60, leftMonitor)],
+    "operations" : [position(50, 50, 0, 50, leftMonitor)],
     "repeat" : true
   },
   "Reeder" : {
@@ -197,153 +201,308 @@ var twoMonitorLayout = S.lay("twoMonitor", {
     "repeat" : true
   },
   "Notes" : {
-    "operations" : [position(30, 100, 35, 0, leftMonitor)],
+    "operations" : [position(50, 100, 50, 0, leftMonitor)],
     "repeat" : true
   },
 });
 
-// 1 monitor layout
-var oneMonitorLayout = S.lay("oneMonitor", {
-  "_before_" : { "operations" : [hideApp('MAMP'), hideApp('MAMP Pro')]},
-  // // Right
-  "Finder" : {
-    "operations" : [position(40, 100, 0, 0, desktop)],
-    "repeat" : true
-  },
-  "Google Chrome" : {
-    "operations" : [function(windowObject) {
-      // I want all Google Chrome windows to use the rightMain operation *unless* it is a Developer Tools window.
-      // In that case I want it to use the leftRight operation. I can't use title-order-regex here because if it
-      // doesn't see the regex, it won't skip the leftRight operation and that will cause one of my other Chrome
-      // windows to use it which I don't want. Also, I could have multiple Developer Tools windows which also
-      // makes title-order-regex unusable. So instead I just write my own free form operation.
-      var title = windowObject.title();
-      if (title !== undefined && title.match(/^Developer\sTools\s-\s.+$/)) {
-        if ( _.contains(apps, "Terminal") )  {
-          windowObject.doOperation( position(40, 50, 60, 50, desktop) );
-        } else {
-          windowObject.doOperation( position(40, 100, 60, 0, desktop) );
-        }
-      } else {
-        windowObject.doOperation( position(50, 100, 0, 0, desktop) );
-      }
-    }],
-    "ignore-fail" : true,
-    "repeat" : true
-  },
-  "Safari" : {
-    "operations" : [position(50, 100, 0, 0, desktop)],
-    "repeat" : true
-  },
-  "Firefox" : {
-    "operations" : [position(50, 100, 0, 0, desktop)],
-    "repeat" : true
-  },
-  "Atom" : {
-    "operations" : [position(50, 100, 50, 0, desktop)],
-    "repeat" : true
-  },
-  // Left
-  "Photoshop CC" : {
-    "operations" : [position(100, 100, 0, 0, desktop)],
-    "repeat" : true
-  },
-  "InDesign CC" : {
-    "operations" : [position(100, 100, 0, 0, desktop)],
-    "repeat" : true
-  },
-  "Adobe Illustrator CC 2017" : {
-    "operations" : [position(100, 100, 0, 0, desktop)],
-    "repeat" : true
-  },
-  // Left
-  "Calendar" : {
-    "operations" : [position(50, 100, 25, 0, desktop)],
-    "repeat" : true
-  },
-  "Messages" : {
-    "operations" : [position(25, 100, 0, 0, desktop)],
-    "repeat" : true
-  },
-  "Things" : {
-    "operations" : [position(25, 100, 75, 0, desktop)],
-    "repeat" : true
-  },
-  "Jabber" : {
-    "operations" : [function(windowObject) {
-      var title = windowObject.title();
-      if (title !== undefined && title.match("Cisco Jabber")) {
-        windowObject.doOperation(position(25, 100, 0, 0, desktop));
-      } else {
-        windowObject.doOperation(position(25, 100, 0, 0, desktop));
-      }
-    }],
-    "repeat" : true
-  },
-  // Left
-  "Mail" : {
-    "operations" : [position(50, 100, 50, 0, desktop)],
-    "repeat" : true
-  },
-  "Microsoft Outlook" : {
-    "operations" : [position(50, 100, 0, 0, desktop)],
-    "repeat" : true
-  },
-  "Airmail" : {
-    "operations" : [position(50, 100, 0, 0, desktop)],
-    "repeat" : true
-  },
-  // Left
-  "Terminal" : {
-    "operations" : [ function(windowObject) {
-      if (matchInArray(openWindows, /^Developer\sTools\s-\s.+$/))  {
-        windowObject.doOperation(position(40, 50, 60, 0, desktop));
-      } else {
-        windowObject.doOperation(position(40, 100, 60, 0, desktop));
-      }
-    }
-  ],
-    "repeat" : true
-  },
-  "SourceTree" : {
-    "operations" : [function(windowObject) {
-      var title = windowObject.title();
-      if (title !== undefined && title.match("SourceTree")) {
-        windowObject.doOperation(position(20, 100, 0, 0, desktop));
-      } else {
-        if (_.contains(apps, "CodeKit"))  {
-          windowObject.doOperation(position(40, 60, 20, 0, desktop));
-        } else {
-          windowObject.doOperation(position(40, 100, 20, 0, desktop));
-        }
-      }
-    }],
-    "ignore-fail" : true,
-    "repeat" : true
-  },
-  "CodeKit" : {
-    "operations" : [position(40, 40, 20, 60, desktop)],
-    "repeat" : true
-  },
-  "Reeder" : {
-    "operations" : [position(35, 100, 65, 0, desktop)],
-    "repeat" : true
-  },
-  // Left 4
-  "Slack" : {
-    "operations" : [position(35, 100, 0, 0, desktop)],
-    "repeat" : true
-  },
-  // Left 4
-  "Discord" : {
-    "operations" : [position(35, 100, 0, 0, desktop)],
-    "repeat" : true
-  },
-  "Notes" : {
-    "operations" : [position(30, 100, 35, 0, desktop)],
-    "repeat" : true
-  }
-});
+// 2 monitor layout
+// var twoMonitorLayoutAlt = S.lay("twoMonitor", {
+//   "_before_" : { "operations" : [hideApp('MAMP'), hideApp('MAMP Pro')]},
+//   // Right
+//   "Finder" : {
+//     "operations" : [position(40, 100, 0, 0, rightMonitor)],
+//     "repeat" : true
+//   },
+//   "Google Chrome" : {
+//     "operations" : [function(windowObject) {
+//       // I want all Google Chrome windows to use the rightMain operation *unless* it is a Developer Tools window.
+//       // In that case I want it to use the leftRight operation. I can't use title-order-regex here because if it
+//       // doesn't see the regex, it won't skip the leftRight operation and that will cause one of my other Chrome
+//       // windows to use it which I don't want. Also, I could have multiple Developer Tools windows which also
+//       // makes title-order-regex unusable. So instead I just write my own free form operation.
+//       var title = windowObject.title();
+//       if (title !== undefined && title.match(/^Developer\sTools\s-\s.+$/)) {
+//         if ( _.contains(apps, "Terminal") )  {
+//           windowObject.doOperation( position(40, 50, 60, 50, leftMonitor) );
+//         } else {
+//           windowObject.doOperation( position(40, 100, 60, 0, leftMonitor) );
+//         }
+//       } else {
+//         windowObject.doOperation( position(100, 100, 0, 0, leftMonitor) );
+//       }
+//     }],
+//     "ignore-fail" : true,
+//     "repeat" : true
+//   },
+//   "Safari" : {
+//     "operations" : [position(50, 100, 0, 0, rightMonitor)],
+//     "repeat" : true
+//   },
+//   "Firefox" : {
+//     "operations" : [position(50, 100, 0, 0, rightMonitor)],
+//     "repeat" : true
+//   },
+//   "Atom" : {
+//     "operations" : [position(85, 100, 0, 0, rightMonitor)],
+//     "repeat" : true
+//   },
+//   "Sketch" : {
+//     "operations" : [position(85, 100, 0, 0, rightMonitor)],
+//     "repeat" : true
+//   },
+//   "TogglDesktop" : {
+//     "operations" : [position(15, 100, 85, 0, rightMonitor)],
+//     "repeat" : true
+//   },
+//   "RubyMine" : {
+//     "operations" : [position(100, 100, 0, 0, rightMonitor)],
+//     "repeat" : true
+//   },
+//   // Left
+//   "Photoshop CC" : {
+//     "operations" : [position(100, 100, 0, 0, leftMonitor)],
+//     "repeat" : true
+//   },
+//   "InDesign CC" : {
+//     "operations" : [position(100, 100, 0, 0, leftMonitor)],
+//     "repeat" : true
+//   },
+//   "Adobe Illustrator CC 2017" : {
+//     "operations" : [position(100, 100, 0, 0, leftMonitor)],
+//     "repeat" : true
+//   },
+//   // Left
+//   "Calendar" : {
+//     "operations" : [position(75, 100, 0, 0, leftMonitor)],
+//     "repeat" : true
+//   },
+//   "Messages" : {
+//     "operations" : [position(25, 100, 0, 0, leftMonitor)],
+//     "repeat" : true
+//   },
+//   "Things" : {
+//     "operations" : [position(25, 100, 75, 0, leftMonitor)],
+//     "repeat" : true
+//   },
+//   // Left
+//   "Mail" : {
+//     "operations" : [position(50, 100, 0, 0, leftMonitor)],
+//     "repeat" : true
+//   },
+//   "Microsoft Outlook" : {
+//     "operations" : [position(50, 100, 0, 0, leftMonitor)],
+//     "repeat" : true
+//   },
+//   "Airmail" : {
+//     "operations" : [position(50, 100, 0, 0, leftMonitor)],
+//     "repeat" : true
+//   },
+//   // Left
+//   "Terminal" : {
+//     "operations" : [ function(windowObject) {
+//       if (matchInArray(openWindows, /^Developer\sTools\s-\s.+$/))  {
+//         windowObject.doOperation(position(40, 50, 60, 0, leftMonitor));
+//       } else {
+//         windowObject.doOperation(position(40, 100, 60, 0, leftMonitor));
+//       }
+//     }
+//   ],
+//     "repeat" : true
+//   },
+//   // "SourceTree" : {
+//   //   "operations" : [function(windowObject) {
+//   //     var title = windowObject.title();
+//   //     if (title !== undefined && title.match("SourceTree")) {
+//   //       windowObject.doOperation(position(20, 100, 0, 0, leftMonitor));
+//   //     } else {
+//   //       if (_.contains(apps, "CodeKit"))  {
+//   //         windowObject.doOperation(position(40, 60, 20, 0, leftMonitor));
+//   //       } else {
+//   //         windowObject.doOperation(position(40, 100, 20, 0, leftMonitor));
+//   //       }
+//   //     }
+//   //   }],
+//   //   "ignore-fail" : true,
+//   //   "repeat" : true
+//   // },
+//   // "Versions" : {
+//   //   "operations" : [function(windowObject) {
+//   //     if (_.contains(apps, "CodeKit"))  {
+//   //       windowObject.doOperation(position(40, 60, 20, 0, leftMonitor));
+//   //     } else {
+//   //       windowObject.doOperation(position(40, 100, 20, 0, leftMonitor));
+//   //     }
+//   //   }],
+//   //   "ignore-fail" : true,
+//   //   "repeat" : true
+//   // },
+//   "CodeKit" : {
+//     "operations" : [position(50, 50, 0, 50, leftMonitor)],
+//     "repeat" : true
+//   },
+//   "Reeder" : {
+//     "operations" : [position(35, 100, 65, 0, leftMonitor)],
+//     "repeat" : true
+//   },
+//   // Left 4
+//   "Slack" : {
+//     "operations" : [position(35, 100, 0, 0, leftMonitor)],
+//     "repeat" : true
+//   },
+//   // Left 4
+//   "Discord" : {
+//     "operations" : [position(35, 100, 0, 0, leftMonitor)],
+//     "repeat" : true
+//   },
+//   "Notes" : {
+//     "operations" : [position(30, 100, 45, 0, leftMonitor)],
+//     "repeat" : true
+//   },
+// });
+//
+// // 1 monitor layout
+// var oneMonitorLayout = S.lay("oneMonitor", {
+//   "_before_" : { "operations" : [hideApp('MAMP'), hideApp('MAMP Pro')]},
+//   // // Right
+//   "Finder" : {
+//     "operations" : [position(40, 100, 0, 0, desktop)],
+//     "repeat" : true
+//   },
+//   "Google Chrome" : {
+//     "operations" : [function(windowObject) {
+//       // I want all Google Chrome windows to use the rightMain operation *unless* it is a Developer Tools window.
+//       // In that case I want it to use the leftRight operation. I can't use title-order-regex here because if it
+//       // doesn't see the regex, it won't skip the leftRight operation and that will cause one of my other Chrome
+//       // windows to use it which I don't want. Also, I could have multiple Developer Tools windows which also
+//       // makes title-order-regex unusable. So instead I just write my own free form operation.
+//       var title = windowObject.title();
+//       if (title !== undefined && title.match(/^Developer\sTools\s-\s.+$/)) {
+//         if ( _.contains(apps, "Terminal") )  {
+//           windowObject.doOperation( position(40, 50, 60, 50, desktop) );
+//         } else {
+//           windowObject.doOperation( position(40, 100, 60, 0, desktop) );
+//         }
+//       } else {
+//         windowObject.doOperation( position(50, 100, 0, 0, desktop) );
+//       }
+//     }],
+//     "ignore-fail" : true,
+//     "repeat" : true
+//   },
+//   "Safari" : {
+//     "operations" : [position(50, 100, 0, 0, desktop)],
+//     "repeat" : true
+//   },
+//   "Firefox" : {
+//     "operations" : [position(50, 100, 0, 0, desktop)],
+//     "repeat" : true
+//   },
+//   "Atom" : {
+//     "operations" : [position(50, 100, 50, 0, desktop)],
+//     "repeat" : true
+//   },
+//   // Left
+//   "Photoshop CC" : {
+//     "operations" : [position(100, 100, 0, 0, desktop)],
+//     "repeat" : true
+//   },
+//   "InDesign CC" : {
+//     "operations" : [position(100, 100, 0, 0, desktop)],
+//     "repeat" : true
+//   },
+//   "Adobe Illustrator CC 2017" : {
+//     "operations" : [position(100, 100, 0, 0, desktop)],
+//     "repeat" : true
+//   },
+//   // Left
+//   "Calendar" : {
+//     "operations" : [position(50, 100, 25, 0, desktop)],
+//     "repeat" : true
+//   },
+//   "Messages" : {
+//     "operations" : [position(25, 100, 0, 0, desktop)],
+//     "repeat" : true
+//   },
+//   "Things" : {
+//     "operations" : [position(25, 100, 75, 0, desktop)],
+//     "repeat" : true
+//   },
+//   "Jabber" : {
+//     "operations" : [function(windowObject) {
+//       var title = windowObject.title();
+//       if (title !== undefined && title.match("Cisco Jabber")) {
+//         windowObject.doOperation(position(25, 100, 0, 0, desktop));
+//       } else {
+//         windowObject.doOperation(position(25, 100, 0, 0, desktop));
+//       }
+//     }],
+//     "repeat" : true
+//   },
+//   // Left
+//   "Mail" : {
+//     "operations" : [position(50, 100, 50, 0, desktop)],
+//     "repeat" : true
+//   },
+//   "Microsoft Outlook" : {
+//     "operations" : [position(50, 100, 0, 0, desktop)],
+//     "repeat" : true
+//   },
+//   "Airmail" : {
+//     "operations" : [position(50, 100, 0, 0, desktop)],
+//     "repeat" : true
+//   },
+//   // Left
+//   "Terminal" : {
+//     "operations" : [ function(windowObject) {
+//       if (matchInArray(openWindows, /^Developer\sTools\s-\s.+$/))  {
+//         windowObject.doOperation(position(40, 50, 60, 0, desktop));
+//       } else {
+//         windowObject.doOperation(position(40, 100, 60, 0, desktop));
+//       }
+//     }
+//   ],
+//     "repeat" : true
+//   },
+//   "SourceTree" : {
+//     "operations" : [function(windowObject) {
+//       var title = windowObject.title();
+//       if (title !== undefined && title.match("SourceTree")) {
+//         windowObject.doOperation(position(20, 100, 0, 0, desktop));
+//       } else {
+//         if (_.contains(apps, "CodeKit"))  {
+//           windowObject.doOperation(position(40, 60, 20, 0, desktop));
+//         } else {
+//           windowObject.doOperation(position(40, 100, 20, 0, desktop));
+//         }
+//       }
+//     }],
+//     "ignore-fail" : true,
+//     "repeat" : true
+//   },
+//   "CodeKit" : {
+//     "operations" : [position(40, 40, 20, 60, desktop)],
+//     "repeat" : true
+//   },
+//   "Reeder" : {
+//     "operations" : [position(35, 100, 65, 0, desktop)],
+//     "repeat" : true
+//   },
+//   // Left 4
+//   "Slack" : {
+//     "operations" : [position(35, 100, 0, 0, desktop)],
+//     "repeat" : true
+//   },
+//   // Left 4
+//   "Discord" : {
+//     "operations" : [position(35, 100, 0, 0, desktop)],
+//     "repeat" : true
+//   },
+//   "Notes" : {
+//     "operations" : [position(30, 100, 35, 0, desktop)],
+//     "repeat" : true
+//   }
+// });
 //
 // var laptopExternalLayout = S.lay("oneMonitor", {
 //
@@ -354,14 +513,17 @@ var oneMonitorLayout = S.lay("oneMonitor", {
 // });
 
 // Defaults
+// S.def(2, twoMonitorLayoutAlt);
 S.def(2, twoMonitorLayout);
-S.def(1, oneMonitorLayout);
+// S.def(1, oneMonitorLayout);
+
 // S.def(1, laptopLayout);
 // S.def(1, laptopExternalLayout);
 //
 // // Layout Operations
+// var twoMonitorAlt = S.op("layout", { "name" : twoMonitorLayoutAlt });
 var twoMonitor = S.op("layout", { "name" : twoMonitorLayout });
-var oneMonitor = S.op("layout", { "name" : oneMonitorLayout });
+// var oneMonitor = S.op("layout", { "name" : oneMonitorLayout });
 // var laptopMonitor = S.op("layout", { "name" : laptopLayout });
 // var laptopExternalMonitor = S.op("layout", { "name" : laptopExternalLayout });
 
@@ -392,7 +554,7 @@ var universalLayout = function() {
   if (S.screenCount() === 2) {
     twoMonitor.run();
   } else if (S.screenCount() === 1) {
-    oneMonitor.run();
+    twoMonitor.run();
   }
 };
 
@@ -400,6 +562,7 @@ var universalLayout = function() {
 S.bnda({
   // Layout Bindings
   "padEnter:ctrl" : universalLayout,
+  // "pad+:ctrl" : twoMonitorAlt,
 
   // Resize Bindings
   // NOTE: some of these may *not* work if you have not removed the expose/spaces/mission control bindings

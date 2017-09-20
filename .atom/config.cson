@@ -22,6 +22,9 @@
   "atom-css-comb":
     projectConfigs: ".csscomb.json"
     readyMadeConfigs: "csscomb"
+  "atom-easy-jsdoc":
+    beta: true
+    useReturns: true
   "atom-material-ui":
     colors:
       abaseColor: "#28827d"
@@ -44,6 +47,9 @@
       "text.html.ruby": [
         "erb"
       ]
+    disabledPackages: [
+      "auto-detect-indentation"
+    ]
     ignoredNames: [
       ".codekit-cache"
     ]
@@ -53,7 +59,11 @@
       "one-dark-syntax"
     ]
     titleBar: "custom-inset"
+  docblockr:
+    return_description: false
+    return_tag: "@returns"
   editor:
+    fontSize: 13
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
@@ -77,12 +87,12 @@
   "linter-php":
     executablePath: "/usr/bin/php"
   "linter-rubocop":
-    command: "/Users/tomskarbek/.rbenv/versions/2.3.1/bin/rubocop"
+    command: "/Users/wazynski/.rbenv/shims/rubocop"
   "linter-ruby": {}
   "linter-scss-lint":
-    executablePath: "/Users/tomskarbek/.rbenv/shims/scss-lint"
-  "linter-ui-default":
-    panelHeight: 69
+    executablePath: "/Users/wazynski/.rbenv/shims/scss-lint"
+  "linter-ui-default": {}
+  "linter-xo": {}
   minimap:
     plugins:
       linter: true
@@ -97,13 +107,12 @@
     themeColor: "Red"
   "spell-check": {}
   "tabs-to-spaces": {}
+  "tidy-tabs":
+    minimumTabs: 5
+    modifiedThreshold: 1
   "tool-bar":
     position: "Left"
   "tree-view":
     hideVcsIgnoredFiles: true
-  wakatime:
-    apikey: "Saved in your ~/.wakatime.cfg file"
-  "wakatime-hidden":
-    lastInit: 1493118402
   welcome:
     showOnStartup: false
