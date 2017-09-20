@@ -2,3 +2,5 @@
 /.atom/compile-cache/
 /.atom/packages/
 /.atom/storage/
+/.DS_Store
+/.atom/.DS_Store
