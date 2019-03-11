@@ -1,0 +1,128 @@
+/* ==========================================================================
+Site Name: SITENAME
+Author: Tom Skarbek-Wazynski (ninesenses.co.uk)
+
+Stylesheet: Footer
+========================================================================== */
+/* ==========================================================================
+  Footer
+   ========================================================================== */
+
+.footer {
+  @include font-size(18);
+
+  padding-top: 2.5rem;
+
+  color: $b-colour;
+  background: $a-colour;
+
+  @media screen and (min-width: $breakpoint-md) {
+    @include font-size(24);
+  };
+
+  .support {
+    span {
+      @include codestyle;
+    }
+
+    .logos {
+      // display: flex;
+
+
+      @media screen and (min-width: $breakpoint-md) {
+        display: flex;
+
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      a {
+        display: block;
+
+        margin: 0 0;
+        padding: 1rem 0 1rem 0;
+
+        transition: opacity $easing $duration;
+
+        opacity: 1;
+
+        @media screen and (min-width: $breakpoint-md) {
+          width: 50%;
+          padding: 2rem 6rem 2rem 0;
+        }
+
+
+        @media screen and (min-width: $breakpoint-lg) {
+          width: auto;
+        }
+        img {
+          width: 100%;
+          max-width: 280px;
+          height: auto;
+        }
+
+        &:hover {
+          opacity: .5;
+        }
+
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .nav {
+    display: block;
+
+    margin-bottom: .25rem;
+
+    @media screen and (min-width: $breakpoint-md) {
+      display: inline;
+    }
+
+    ul {
+      display: inline;
+
+      margin: 0;
+      padding: 0;
+
+      list-style: none;
+
+      text-align: right;
+
+      @media screen and (min-width: $breakpoint-md) {
+        &::after {
+          content: ' | ';
+
+          opacity: .25;
+        }
+      }
+    }
+
+    li {
+      display: inline;
+
+      padding: 0;
+    }
+  }
+
+  .credit {
+    @include codestyle($b-colour);
+
+    padding: 1.75rem 0;
+
+    background: darken($a-colour, 5%);
+
+    .col {
+      @media screen and (min-width: $breakpoint-lg) {
+        display: flex;
+
+        .credits {
+          margin: 0 0 0 auto;
+        }
+      }
+    }
+  }
+}

@@ -25,6 +25,8 @@
   "atom-easy-jsdoc":
     beta: true
     useReturns: true
+  "atom-ide-ui":
+    use: {}
   "atom-material-ui":
     colors:
       abaseColor: "#28827d"
@@ -36,6 +38,8 @@
     treeView:
       compactList: false
     ui: {}
+  "atom-package-deps":
+    ignored: []
   "auto-update-packages": {}
   "autocomplete-plus": {}
   "autocomplete-ruby":
@@ -48,22 +52,44 @@
         "erb"
       ]
     disabledPackages: [
-      "auto-detect-indentation"
+      "linter"
+      "language-javascript-jsx"
+      "double-tag"
+      "goto-definition"
+      "hashy"
+      "highlight-selected"
+      "ide-css"
+      "ide-flowtype"
+      "ide-html"
+      "ide-json"
+      "Stylus"
+      "intentions"
+      "tidy-tabs"
+      "svgo"
+      "rails-snippets"
+      "rails-partials"
+      "minimap"
+      "minimap-pigments"
+      "atom-ide-ui"
+      "ide-typescript"
     ]
     ignoredNames: [
       ".codekit-cache"
+      ".gitignore"
+      "node_modules"
     ]
     telemetryConsent: "no"
     themes: [
-      "atom-material-ui"
-      "one-dark-syntax"
+      "one-dark-ui"
+      "atom-ide-dark-syntax"
     ]
     titleBar: "custom-inset"
+    useTreeSitterParsers: false
   docblockr:
     return_description: false
     return_tag: "@returns"
   editor:
-    fontSize: 13
+    fontSize: 15
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
@@ -74,15 +100,23 @@
   "file-icons":
     coloured: false
     onChanges: true
+  "file-watcher":
+    promptWhenChange: true
+    useFsWatchFile: true
   fonts:
     fontFamily: "Hack"
+  "language-babel":
+    disableWhenNoBabelrcFileInPath: false
+    emmetCSSAutocomplete: true
   linter: {}
   "linter-eslint":
-    eslintrcPath: "~/"
-    globalNodePath: "/usr/local"
+    global:
+      eslintrcPath: "~/"
+      globalNodePath: "/usr/local"
   "linter-foodcritic":
     executablePath: "/Users/tomskarbek/.rbenv/shims/foodcritic"
   "linter-jshint":
+    disableWhenNoJshintrcFileInPath: true
     lintInlineJavaScript: true
   "linter-php":
     executablePath: "/usr/bin/php"
@@ -91,17 +125,25 @@
   "linter-ruby": {}
   "linter-scss-lint":
     executablePath: "/Users/wazynski/.rbenv/shims/scss-lint"
-  "linter-ui-default": {}
+  "linter-ui-default":
+    panelHeight: 195
   "linter-xo": {}
   minimap:
     plugins:
       linter: true
       pigments: true
       pigmentsDecorationsZIndex: 0
-  "one-dark-ui": {}
+  "one-dark-ui":
+    tabSizing: "Maximum"
   "package-sync":
     createOnChange: true
     forceOverwrite: true
+  "prettier-atom":
+    formatOnSaveOptions:
+      enabled: true
+      isDisabledIfNoConfigFile: true
+      isDisabledIfNotInPackageJson: true
+      showInStatusBar: true
   "ruby-test": {}
   "seti-ui":
     themeColor: "Red"
@@ -112,7 +154,8 @@
     modifiedThreshold: 1
   "tool-bar":
     position: "Left"
-  "tree-view":
-    hideVcsIgnoredFiles: true
+  "tree-view": {}
   welcome:
     showOnStartup: false
+  zentabs:
+    neverCloseUnsaved: true

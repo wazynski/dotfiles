@@ -89,7 +89,7 @@ var twoMonitorLayout = S.lay("twoMonitor", {
     "repeat" : true
   },
   "Atom" : {
-    "operations" : [position(80, 100, 0, 0, rightMonitor)],
+    "operations" : [position(90, 100, 0, 0, rightMonitor)],
     "repeat" : true
   },
   "RubyMine" : {
@@ -97,7 +97,15 @@ var twoMonitorLayout = S.lay("twoMonitor", {
     "repeat" : true
   },
   "TogglDesktop" : {
-    "operations" : [position(20, 100, 80, 0, rightMonitor)],
+    "operations" : [position(10, 100, 90, 0, rightMonitor)],
+    "repeat" : true
+  },
+  "Toggl Desktop" : {
+    "operations" : [position(10, 100, 90, 0, rightMonitor)],
+    "repeat" : true
+  },
+  "Toggl" : {
+    "operations" : [position(10, 100, 90, 0, rightMonitor)],
     "repeat" : true
   },
   // Left

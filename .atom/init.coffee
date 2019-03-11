@@ -9,3 +9,7 @@
 # atom.workspace.observeTextEditors (editor) ->
 #   editor.onDidSave ->
 #     console.log "Saved! #{editor.getPath()}"
+
+atom.workspace.observeTextEditors (editor) ->
+  if editor.getPath()?.match(/\.cshtml$/)
+    editor.setGrammar(atom.grammars.grammarForScopeName('text.html'))
